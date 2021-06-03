@@ -2,225 +2,131 @@
 
 require_once 'function.php';
 
+if (!isset($_SESSION['top'])) :
 
-$a = 10;
-$b = 5;
-$c = 2;
+    mov('/login.php');
 
-$x;
-$y;
+endif;
 
-$y = $a/$c-$b;
-echo $y;
-br();
-hr();
+if (
+    isset($_GET['exit']) ||
+    !isset($_COOKIE['out'])
+) :
 
+    unset($_SESSION['top']);
+    mov('/login.php');
 
-echo 666;
-echo 'ali';
-br();
-
-
-echo $a;
-echo '<br>';
-
-
-$x = $a + $c;
-echo $x;
-
-
-br();
-hr();
-
-
-if ($x <10)
-echo 'low';
-elseif ($x == 10)
-echo 'tasavi';
-else
-echo 'high';
-
-
-br();
-hr();
-
-
-echo add_1 (8, 4, 2, 3) + add_2 (5, 3);
-
-
-br();
-hr();
- 
-
-function add_1 ( $q, $w, $e, $r )
-{
-    return $q / $e + $w * $r;
-}
-
-function add_2 ($s, $d)
-{
-    return $s % $d;
-}
-
-
-
-echo '----------------------';
-
-
-$text ='ali and reza is
-
-students or techers';
-echo strlen($text);
-br();
-
-echo str_word_count($text);
-br();
-
-
-echo strrev ($text);
-br();
-
-echo strpos($text, 'or');
-br();
-
-echo str_replace('is' ,'are' , $text);
-
-
-
-echo'---------------------------------';
-
-
-
-// $hour = date('h');
-
-// if ($hour <= 9) :
-
-//     echo 'good morning';
-
-// elseif ($hour < 17) :
-
-//     echo 'good afternoon';
-
-// else :
-
-//     echo 'َgood night';
-
-// endif;
-
-// echo $hour;
-
- 
-
-$ali = 'phd';
-switch ($ali):
-
-    case 'student':
-        echo '7-18';
-        break;
-
-    case 'univercity' :
-        echo '19-25';
-        break;
-
-    default:
-        echo 'phd';
-        break;
-
-endswitch;
-
-$x ++;
-echo ++$x;
-
-$r=5;
-$p='5';
-var_dump($r==$p);
-var_dump($r===$p);
-
-
-
-echo '<table>';
-for ($i=1 ;$i<=10 ; $i++)
-{ echo'<tr>';
-
-for ($j=0 ; $j<=10 ; $j++)
-{
-    echo'<td>';
-    echo '<hr>';
-    $z=$i*$j;
-echo ($z);
-
-
-}
-}
-
-// echo'</table>';
-
-// echo '<table border="1">';
-// $group = array('A' => 120, 'B' => 125, 'C' => 83, 'D' => 154, 'E' => 123);
-// foreach($group as $key => $value) {
-//     echo '<th>' . $key . '</th>' . '<td>' . $value . '</td><tr></tr>';
-// }
-// echo '</table>';
-
-
-// for($i=0;$i<=10;$i++){
-// 	echo '<br/>';
-// 	for($j=0;$j<=10;$j++){
-// 		echo $i * $j,'    ';
-// 	}
-// }
-echo'<hr>';
-echo'<hr>';
-echo'<hr>';
-
-
-echo ("<table width=1000><tr>");
-for ($i=1; $i <= 10; $i++) { 
-	echo ("<td>");
-	for ($a=1; $a <= 10; $a++) { 
-		echo ("$i X $a = ");
-		echo $a * $i."<br>";
-	}
-	echo ("</td>");
-}
-
-
-
-echo ("</tr></table>");
-echo'<hr>';
-echo'<hr>';
-echo'<hr>';
-$array = array( 1, 2, 3, 4, 5);
-         
-foreach( $array as $value ) {
-   echo "Value is $value <br />";
-}
-
-// $i = true;
-// $loop = 1;
-
-// while(true) {
-// if($i === false) {
-// break;
-// } else {
-// echo 'Loop: ' . $loop . '<br>';
-// }
-
-// if($loop > 4) {
-// $i = false;
-// } else {
-// $loop++;
-// }
-// }
-
-
-$array=array("ali"=>17,"mani"=>19,"mahdi"=>18,"saeid"=>20);
-$ali=["red","blue","green","black"];
-$mani=["tehran","mashhad","shiraz","ahvaz"];
-$mahdi=["php","html","css","sql","jason","java"];
-
-var_dump($array);
-
-
+endif;
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                    <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" height="15" alt="" loading="lazy" />
+                </a>
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index">صفحه ورود</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.php?exit">خروج</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-dark text-white" href="#">خوش آمدید <span class="text-primary" style="font-size: 20px; font-weight: bold; text-shadow: 1px 1px 1px #fff;"><?php echo $_SESSION['laptop']; ?></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-danger text-white ms-3" href="#">
+                            <span style="width:30px; height:30px; box-shadow:0 0 5px #666; padding:10px; margin-right:30px; text-align:center; line-height:30px; border-radius:50px;">
+                                <?php
+                                $time_etmam = $_COOKIE['bendazBiron'] - time();
+                                echo $time_etmam;
+                                ?>
+                            </span>
+                            ثانیه تا خروج</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <!-- Icon -->
+                <a class="text-reset me-3" href="#">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+
+                <!-- Notifications -->
+                <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" href="#">Another news</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                </ul>
+
+                <!-- Avatar -->
+                <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                    <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-circle" height="25" alt="" loading="lazy" />
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" href="#">My profile</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Settings</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+
+    <!-- MDB -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
+</body>
+
+</html>
